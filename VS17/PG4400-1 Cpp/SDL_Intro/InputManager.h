@@ -21,9 +21,9 @@ public:
 	bool GetKeyUp(Keys) const;
 
 	// Returns the position of the cursor relative to the window as a Vector2
-	Vector2 GetMousePos() const;
+	Vector2<int> GetMousePos() const;
 	// Returns the a Vector2 for the position difference from the last frame
-	Vector2 GetMouseMovement() const;
+	Vector2<int> GetMouseMovement() const;
 	// Like GetKeyDown(), but for the mouse-button specified
 	bool GetMouseButtonDown(MouseButton mouse_button) const;
 	// Like GetKey(), but for the mouse-button specified
@@ -57,8 +57,8 @@ private:
 	*/
 
 	// The cursors current position relative to the window
-	Vector2 m_mouse_pos;
-	Vector2 m_mouse_prev_pos;
+	Vector2<int> m_mouse_pos;
+	Vector2<int> m_mouse_prev_pos;
 	Uint32 m_mouse_btn_state;
 	Uint32 m_mouse_prev_btn_state;
 
