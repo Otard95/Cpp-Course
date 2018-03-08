@@ -2,35 +2,27 @@
 #include <mutex>
 #include <valarray>
 
-Vector2::Vector2() : m_x(0), m_y(0) {}
+Vector2::Vector2() : x(0), y(0) {}
 
-Vector2::Vector2(double _x, double _y) : m_x(_x), m_y(_y) {}
+Vector2::Vector2(double _x, double _y) : x(_x), y(_y) {}
 
-Vector2::Vector2(const double coords[2]) : m_x(coords[0]), m_y(coords[1]) {}
+Vector2::Vector2(const double coords[2]) : x(coords[0]), y(coords[1]) {}
 
 /*
 * ## Instance Methods
 */
 
 const double* Vector2::ToArray() {
-	return &m_x;
-}
-
-double Vector2::x() {
-	return m_x;
-}
-
-double Vector2::y() {
-	return m_y;
+	return &x;
 }
 
 void Vector2::SetCoords(double _x, double _y) {
-	m_x = _x;
-	m_y = _y;
+	x = _x;
+	y = _y;
 }
 
 double Vector2::Length() {
-	return sqrt((m_x*m_x) + (m_y*m_y));
+	return sqrt((x*x) + (y*y));
 }
 
 void Vector2::Normalize() {
@@ -45,23 +37,23 @@ Vector2 Vector2::normalized() {
 }
 
 void Vector2::Add(Vector2 const &v) {
-	m_x += v.m_x;
-	m_y += v.m_y;
+	x += v.x;
+	y += v.y;
 }
 
 void Vector2::Sub(Vector2 const &v) {
-	m_x -= v.m_x;
-	m_y -= v.m_y;
+	x -= v.x;
+	y -= v.y;
 }
 
 void Vector2::Mult(double const scalar) {
-	m_x *= scalar;
-	m_y *= scalar;
+	x *= scalar;
+	y *= scalar;
 }
 
 void Vector2::Div(double const scalar) {
-	m_x /= scalar;
-	m_y /= scalar;
+	x /= scalar;
+	y /= scalar;
 }
 
 /*
@@ -69,26 +61,26 @@ void Vector2::Div(double const scalar) {
 */
 
 double Vector2::Dot(Vector2 const &lhs, Vector2 const &rhs) {
-	return ((lhs.m_x * rhs.m_x) + (lhs.m_y * rhs.m_y));
+	return ((lhs.x * rhs.x) + (lhs.y * rhs.y));
 }
 
 Vector2 Vector2::Add(Vector2 const &lhs, Vector2 const &rhs) {
-	Vector2 result (lhs.m_x + rhs.m_x, lhs.m_y + rhs.m_y);
+	Vector2 result (lhs.x + rhs.x, lhs.y + rhs.y);
 	return  result;
 }
 
 Vector2 Vector2::Sub(Vector2 const &lhs, Vector2 const &rhs) {
-	Vector2 result (lhs.m_x - rhs.m_x, lhs.m_y - rhs.m_y);
+	Vector2 result (lhs.x - rhs.x, lhs.y - rhs.y);
 	return  result;
 }
 
 Vector2 Vector2::Mult(double const scalar, Vector2 const &v) {
-	Vector2 result (v.m_x * scalar, v.m_y * scalar);
+	Vector2 result (v.x * scalar, v.y * scalar);
 	return  result;
 }
 
 Vector2 Vector2::Div(double const scalar, Vector2 const &v) {
-	Vector2 result (v.m_x / scalar, v.m_y / scalar);
+	Vector2 result (v.x / scalar, v.y / scalar);
 	return  result;
 }
 
@@ -142,4 +134,12 @@ Vector2 operator/(const double scalar, const Vector2 &v) {
 
 double Vector2::operator*(const Vector2 &rhs) const {
 	return Vector2::Dot(*this, rhs);
+}
+
+bool Vector2::operator==(const Vector2 & rhs) {
+	return x == rhs.x && y == rhs.y;
+}
+
+bool Vector2::operator!=(const Vector2 & rhs) {
+	return !(*this == rhs);
 }

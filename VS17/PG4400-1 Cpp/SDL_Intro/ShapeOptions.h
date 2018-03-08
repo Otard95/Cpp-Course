@@ -11,7 +11,8 @@ enum class AnchorPoint {
 	bottom,
 	bottom_left,
 	right,
-	left
+	left,
+	center
 
 };
 
@@ -19,9 +20,6 @@ using ShapeOptions = struct {
 
 	// ralvative or absolute path to .BMP
 	std::string texture_path;
-	// <x-size>X<y-size> || <number>% || cover || fit
-	// (default) <Texture.x>X<Texture.y>
-	std::string texture_size;
 	// (default) top_left || bottom || right || ... ||  center
 	AnchorPoint anchor_point;
 	// { red, green, blue, alpha } int valuses in range 0-255

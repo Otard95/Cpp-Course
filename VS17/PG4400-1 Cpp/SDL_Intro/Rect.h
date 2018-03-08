@@ -9,8 +9,11 @@ class Rect : public Shape {
 	void LoadTexture(SDL_Renderer*);
 
 public:
-	Rect(int x, int y, int h, int w);
-	Rect(int x, int y, int h, int w, ShapeOptions, SDL_Renderer*);
+	Rect(int x, int y, int w, int h);
+	Rect(int x, int y, int w, int h, ShapeOptions);
+	Rect(int x, int y, int w, int h, ShapeOptions, SDL_Renderer*);
 	~Rect() = default;
+
 	void Draw(SDL_Renderer*) override;
+	void SetScale(int w, int h);
 };
