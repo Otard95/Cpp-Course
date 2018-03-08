@@ -8,10 +8,10 @@ public:
 	T x;
 	T y;
 
-	Vector2() : x(0), y(0) { std::cout << "Vec zero" << std::endl; }
-	Vector2(T _x, T _y) : x(_x), y(_y) { std::cout << "Vec" << std::endl; }
-	Vector2(T const coords[2]) : x(coords[0]), y(coords[1]) { std::cout << "Vec from arr" << std::endl; }
-	Vector2(Vector2<T> const &v) : x(v.x), y(v.y) { std::cout << "Vec copy" << std::endl; };
+	Vector2() : x(0), y(0) {}
+	Vector2(T _x, T _y) : x(_x), y(_y) {}
+	Vector2(T const coords[2]) : x(coords[0]), y(coords[1]) {}
+	Vector2(Vector2<T> const &v) : x(v.x), y(v.y) {}
 
 	~Vector2() = default;
 
