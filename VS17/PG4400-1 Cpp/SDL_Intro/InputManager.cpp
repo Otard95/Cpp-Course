@@ -6,8 +6,8 @@ InputManager::InputManager()
 	: m_num_keys(0)
 	, m_keys(SDL_GetKeyboardState(&m_num_keys))
 	, m_prev_keys(std::unique_ptr<Uint8>(new Uint8[m_num_keys]))
-	, m_mouse_pos(Vector2())
-	, m_mouse_prev_pos(Vector2())
+	, m_mouse_pos(Vector2<int>())
+	, m_mouse_prev_pos(Vector2<int>())
 	, m_mouse_btn_state(0)
 	, m_mouse_prev_btn_state(0) {
 	UpdateMouseState();
@@ -45,11 +45,11 @@ bool InputManager::GetKeyUp(Keys key_code) const {
 					m_prev_keys.get()[MapKeys.at(key_code)] != 0);
 }
 
-Vector2 InputManager::GetMousePos() const {
+Vector2<int> InputManager::GetMousePos() const {
 	return m_mouse_pos;
 }
 
-Vector2 InputManager::GetMouseMovement() const {
+Vector2<int> InputManager::GetMouseMovement() const {
 	return m_mouse_pos - m_mouse_prev_pos;
 }
 
@@ -84,7 +84,7 @@ InputManager::~InputManager() {
 void InputManager::UpdateMouseState() {
 
 	// Longwinded but no copy-constructor used
-	m_mouse_prev_pos.SetCoords(m_mouse_pos.x(), m_mouse_pos.y());
+	m_mouse_prev_pos.SetCoords(m_mouse_pos.x, m_mouse_pos.y);
 	m_mouse_prev_btn_state = m_mouse_btn_state;
 
 	int x, y;
