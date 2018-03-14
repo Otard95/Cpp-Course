@@ -9,6 +9,7 @@ class Sprite : public Component {
 
 private:
 	 std::unique_ptr<SDL_Texture> m_texture;
+	 const SDL_Renderer& m_renderer;
 
 public:
 	Sprite();

@@ -1,9 +1,10 @@
 #include "Sprite.h"
+#include "Canvas.h"
 
-
-
-Sprite::Sprite() : Component() {
-}
+Sprite::Sprite() : Component()
+, m_texture(nullptr)
+, m_renderer(Canvas::Instance().GetRenderer())
+{}
 
 
 Sprite::~Sprite() {
