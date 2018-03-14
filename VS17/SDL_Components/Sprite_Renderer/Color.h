@@ -1,0 +1,11 @@
+#pragma once
+#include <SDL.h>
+
+typedef struct _COLOR { 
+
+	Uint8 r;
+	Uint8 g;
+	Uint8 b;
+	Uint8 a;
+
+} Color;
