@@ -8,11 +8,12 @@
 class Sprite : public Component {
 
 private:
-	 std::unique_ptr<SDL_Texture> m_texture;
-	 const SDL_Renderer& m_renderer;
+	 SDL_Texture* m_texture;
+	 SDL_Renderer* const m_renderer;
+	 SDL_Rect m_coords;
 
 public:
-	Sprite();
+	Sprite(std::vector<std::shared_ptr<Component>> &components);
 	~Sprite();
 
 	void Start() override;
