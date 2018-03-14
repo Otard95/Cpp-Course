@@ -46,10 +46,10 @@ public:
 	}
 
 	// Adds provided Vector2 of same type onto this.
-	void Add (Vector2<T> const &v) {
+	/*void Add (Vector2<T> const &v) {
 		x += v.x;
 		y += v.y;
-	}
+	}*/
 	// Adds provided double Vector2 onto this.
 	void Add (Vector2<double> const &v) {
 		x += v.x;
