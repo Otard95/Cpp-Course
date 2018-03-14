@@ -1,7 +1,9 @@
-#pragma once
+#ifndef __COLOR_H__
+#define __COLOR_H__
+
 #include <SDL.h>
 
-typedef struct _COLOR { 
+typedef struct { 
 
 	Uint8 r;
 	Uint8 g;
@@ -9,3 +11,5 @@ typedef struct _COLOR {
 	Uint8 a;
 
 } Color;
+
+#endif
