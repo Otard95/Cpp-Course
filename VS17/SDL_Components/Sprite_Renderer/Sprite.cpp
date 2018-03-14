@@ -13,7 +13,7 @@ Sprite::~Sprite() {
 }
 
 void Sprite::Start() {
-	// Get renderer
+	m_transform = GetComponent<Transform>();
 }
 
 void Sprite::Update() {
