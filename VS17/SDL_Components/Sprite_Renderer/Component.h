@@ -14,7 +14,7 @@ public:
 	Component(std::vector<std::shared_ptr<Component>> &components);
 	~Component();
 
-	template <typename T>
+	template <class T>
 	std::shared_ptr<T> GetComponent() {
 
 		std::shared_ptr<T> comp = nullptr;
