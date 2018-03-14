@@ -15,20 +15,18 @@ public:
 	~Component();
 
 	template <typename T>
-	Component& GetComponent() {
+	std::shared_ptr<T> GetComponent() {
 
-		std::shared_ptr<Component> comp = nullptr;
+		std::shared_ptr<T> comp = nullptr;
 		std::for_each(m_available_components.begin(),
 									m_available_components.end(),
 									[comp] (std::shared_ptr<Component> c) {
 			
-			if (!comp && dynamic_cast<T*>(&(*c)) != nullptr) {
-				comp = &(*c);
-			}
+			if (!comp) comp = std::dynamic_pointer_cast<T>(c);
 
 		});
 
-		return (*comp);
+		return comp;
 
 	}
 
