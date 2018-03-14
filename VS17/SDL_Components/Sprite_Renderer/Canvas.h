@@ -2,6 +2,7 @@
 #define __CANVAS_H__
 
 #include <string>
+#include <memory>
 #include <SDL.h>
 #include "Color.h"
 
@@ -12,8 +13,8 @@ private:
 
 	static Canvas m_instance;
 
-	SDL_Window * m_window;
-	SDL_Renderer* m_renderer;
+	std::shared_ptr<SDL_Window> m_window;
+	std::shared_ptr<SDL_Renderer> m_renderer;
 	Color m_background;
 
 public:
@@ -21,7 +22,7 @@ public:
 	Canvas(Canvas const &) = delete;
 	Canvas& operator=(const Canvas&) = delete;
 
-	const SDL_Renderer& GetRenderer() const;
+	SDL_Renderer* const GetRenderer() const;
 	void SetTitle(const std::string title);
 	void RenderFrame() const;
 
