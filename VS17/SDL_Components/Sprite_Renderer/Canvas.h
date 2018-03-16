@@ -13,8 +13,8 @@ private:
 
 	static Canvas m_instance;
 
-	std::shared_ptr<SDL_Window> m_window;
-	std::shared_ptr<SDL_Renderer> m_renderer;
+	SDL_Window* m_window;
+	SDL_Renderer* m_renderer;
 	Color m_background;
 
 public:

@@ -6,7 +6,8 @@ Canvas::Canvas()
 	, m_renderer(nullptr)
 	, m_background({0,0,0,255})
 {
-	SDL_Window* win = SDL_CreateWindow(
+
+	m_window = SDL_CreateWindow(
 		"Canvas",                             //  window title
 		SDL_WINDOWPOS_UNDEFINED,              //  initial m_x position
 		SDL_WINDOWPOS_UNDEFINED,              //  initial m_y position
@@ -21,26 +22,23 @@ Canvas::Canvas()
 		return;
 	}
 
-	SDL_Renderer* renderer = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED);
+	m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED);
 
 	if (m_renderer == nullptr) {
 		std::cerr << "Failed to create renderer: "
 			<< SDL_GetError() << std::endl;
-		SDL_DestroyWindow(win);
+		SDL_DestroyWindow(m_window);
 		return;
 	}
 
-	m_window = std::shared_ptr<SDL_Window> (win);
-	m_renderer = std::shared_ptr<SDL_Renderer> (renderer);
-
-	SDL_SetRenderDrawColor(&(*m_renderer),
+	SDL_SetRenderDrawColor(m_renderer,
 												 m_background.r,
 												 m_background.g,
 												 m_background.b,
 												 m_background.a);
 
-	SDL_RenderClear(&(*m_renderer));
-	SDL_RenderPresent(&(*m_renderer));
+	SDL_RenderClear(m_renderer);
+	SDL_RenderPresent(m_renderer);
 }
 
 Canvas& Canvas::Instance() {
@@ -49,22 +47,26 @@ Canvas& Canvas::Instance() {
 }
 
 SDL_Renderer* const Canvas::GetRenderer() const {
-	return &(*m_renderer);
+	return m_renderer;
 }
 
 void Canvas::SetTitle(const std::string title) {
-	SDL_SetWindowTitle(&(*m_window), title.c_str());
+	SDL_SetWindowTitle(m_window, title.c_str());
 }
 
 void Canvas::RenderFrame() const {
 
-	SDL_RenderPresent(&(*m_renderer));
-	SDL_SetRenderDrawColor(&(*m_renderer), m_background.r, m_background.g, m_background.b, m_background.a);
-	SDL_RenderClear(&(*m_renderer));
+	SDL_RenderPresent(m_renderer);
+	SDL_SetRenderDrawColor(m_renderer,
+												 m_background.r,
+												 m_background.g,
+												 m_background.b,
+												 m_background.a);
+	SDL_RenderClear(m_renderer);
 
 }
 
 Canvas::~Canvas() {
-	SDL_DestroyRenderer(&(*m_renderer));
-	SDL_DestroyWindow(&(*m_window));
+	SDL_DestroyRenderer(m_renderer);
+	SDL_DestroyWindow(m_window);
 }
