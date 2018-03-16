@@ -1,5 +1,5 @@
-#pragma once
-#include <iostream>
+#ifndef __VECTOR2_H__
+#define __VECTOR2_H__
 
 template <typename T>
 class Vector2 {
@@ -16,7 +16,7 @@ public:
 	~Vector2() = default;
 
 	/*
-	 * ## Instance Methods
+	* ## Instance Methods
 	*/
 
 	// Get this vectors components as a const T array.
@@ -47,8 +47,8 @@ public:
 
 	// Adds provided Vector2 of same type onto this.
 	/*void Add (Vector2<T> const &v) {
-		x += v.x;
-		y += v.y;
+	x += v.x;
+	y += v.y;
 	}*/
 	// Adds provided double Vector2 onto this.
 	void Add (Vector2<double> const &v) {
@@ -111,7 +111,7 @@ public:
 	}
 
 	/*
-	 * ## Operator overloads
+	* ## Operator overloads
 	*/
 
 	// Adds the right-hand vector onto itself.
@@ -188,3 +188,4 @@ public:
 
 };
 
+#endif // !__VECTOR2_H__
