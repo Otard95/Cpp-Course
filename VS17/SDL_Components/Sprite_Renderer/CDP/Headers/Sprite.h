@@ -5,6 +5,7 @@
 #include <memory>
 #include <SDL.h>
 #include "Component.h"
+#include "../../Vector2.h"
 
 namespace CDP {
 
@@ -14,6 +15,7 @@ namespace CDP {
 		// SDL Requirements
 		SDL_Renderer * const m_renderer;
 		// Texture
+		Vector2<double> m_anchor_point_offset;
 		std::string m_texture_file;
 		SDL_Texture* m_texture;
 		SDL_Rect m_coords;

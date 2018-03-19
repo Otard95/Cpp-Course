@@ -9,11 +9,10 @@ Sprite::Sprite(std::vector<std::shared_ptr<Component>> &components,
 							 GameObject& gobj,
 							 std::string texture_file)
 	: Component(components, gobj)
+	, m_renderer(Canvas::Instance().GetRenderer())
 	, m_texture_file(texture_file)
 	, m_texture(nullptr)
-	, m_renderer(Canvas::Instance().GetRenderer())
 {}
-
 
 Sprite::~Sprite() {
 	if (m_texture != nullptr) SDL_DestroyTexture(m_texture);
@@ -41,19 +40,27 @@ void Sprite::Start() {
 		return;
 	}
 	
-	// Use surface hight and with
+	// Use surface hight and width
 	m_coords.h = surface->h;
 	m_coords.w = surface->w;
+	// Set anchor point to center of sprite
+	m_anchor_point_offset.x = surface->w / 2;
+	m_anchor_point_offset.y = surface->h / 2;
 	// Use transform's position
-	m_coords.x = m_transform->Position().x;
-	m_coords.y = m_transform->Position().y;
+	m_coords.x = m_transform->Position().x - m_anchor_point_offset.x;
+	m_coords.y = m_transform->Position().y - m_anchor_point_offset.y;
 
 	SDL_FreeSurface(surface);
 
 }
 
 void Sprite::Update() {
-	
+
+	m_transform->SetPosition(60, 60);
+	// Update coords
+	m_coords.x = m_transform->Position().x - m_anchor_point_offset.x;
+	m_coords.y = m_transform->Position().y - m_anchor_point_offset.y;
+	// Render Sprite
 	if (m_texture != nullptr) SDL_RenderCopy(m_renderer, m_texture, nullptr, &m_coords);
 
 }
