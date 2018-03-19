@@ -1,7 +1,7 @@
 #ifndef __TRANSFORM_COMPONENT_H__
 #define __TRANSFORM_COMPONENT_H__
 
-#include "../Vector2.h"
+#include "../../Vector2.h"
 #include "Component.h"
 
 namespace CDP {
@@ -16,7 +16,10 @@ namespace CDP {
 		~Transform();
 
 		Vector2<double> const& Position();
-		void Translate(Vector2<double>&);
+		void Translate(const Vector2<double>&);
+		void Translate(double x, double y);
+		void SetPosition(const Vector2<double>&);
+		void SetPosition(double x, double y);
 
 	};
 
