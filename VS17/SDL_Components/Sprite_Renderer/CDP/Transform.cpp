@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Headers/Transform.h"
 
 using namespace CDP;
@@ -15,7 +14,7 @@ Vector2<double> const& Transform::Position() {
 }
 
 void Transform::Translate(const Vector2<double> &translation) {
-	m_position.Add(translation);
+	m_position += translation;
 }
 
 void Transform::Translate(double x, double y) {

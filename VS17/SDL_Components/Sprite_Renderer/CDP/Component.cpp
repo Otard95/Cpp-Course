@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Headers/Component.h"
 
 using namespace CDP;
