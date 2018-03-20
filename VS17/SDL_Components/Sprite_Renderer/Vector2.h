@@ -86,7 +86,7 @@ public:
 	*/
 
 	// Get the dot product of two vectors
-	static T Dot(Vector2<T> const & lhs, Vector2<T> const & rhs) {
+	static double Dot(Vector2<T> const & lhs, Vector2<T> const & rhs) {
 		return ((lhs.x * rhs.x) + (lhs.y * rhs.y));
 	}
 	// Adds the vectors and retern's as a new one.
@@ -120,7 +120,7 @@ public:
 		return *this;
 	}
 	// Adds the left and right-hand vector and returns a new one.
-	Vector2<T>  operator  + (const Vector2<T> &rhs) const {
+	Vector2<T>  operator + (const Vector2<T> &rhs) const {
 		Vector2 result (x + rhs.x, y + rhs.y);
 		return  result;
 	}
@@ -130,7 +130,7 @@ public:
 		return *this;
 	}
 	// Returns a new vector that is the left subtracted by the right-hand vector.
-	Vector2<T>  operator  - (const Vector2<T> &rhs) const {
+	Vector2<T> operator - (const Vector2<T> &rhs) const {
 		Vector2 result (x - rhs.x, y - rhs.y);
 		return  result;
 	}
@@ -140,8 +140,8 @@ public:
 		return *this;
 	}
 	// Multiply the left-hand vector with the right-hand scalar, returns new vector.
-	Vector2<T>  operator  * (T scalar) const {
-		Vector2 result (v.x * scalar, v.y * scalar);
+	Vector2<T> operator * (T scalar) const {
+		Vector2 result (x * scalar, y * scalar);
 		return  result;
 	}
 	friend Vector2<T> operator *(T scalar, const Vector2<T> &v) {
@@ -154,8 +154,8 @@ public:
 		return *this;
 	}
 	// Devide the left-hand vector with the right-hand scalar, returns new vector.
-	Vector2<T>  operator  / (T scalar) const {
-		Vector2 result (v.x / scalar, v.y / scalar);
+	Vector2<T> operator / (T scalar) const {
+		Vector2 result (x / scalar, y / scalar);
 		return  result;
 	}
 	friend Vector2<T> operator /(T scalar, const Vector2<T> &v) {
@@ -163,7 +163,7 @@ public:
 		return  result;
 	}
 	// Gets the dot product of the two vectors.
-	T operator *(const Vector2<T> &rhs) const {
+	double operator *(const Vector2<T> &rhs) const {
 		return Vector2::Dot(*this, rhs);
 	}
 	// Checks if the vectors are the same, ie: parallel and identical magnitude.
