@@ -5,7 +5,7 @@
 #include <memory>
 #include <SDL.h>
 #include "Component.h"
-#include "../../Vector2.h"
+#include "Vector2.h"
 
 namespace CDP {
 

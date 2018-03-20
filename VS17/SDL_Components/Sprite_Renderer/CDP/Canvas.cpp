@@ -1,5 +1,7 @@
 #include <iostream>
-#include "Canvas.h"
+#include "Headers/Canvas.h"
+
+using namespace CDP;
 
 Canvas::Canvas()
 	: m_window(nullptr)
@@ -46,11 +48,11 @@ Canvas& Canvas::Instance() {
 	return m_instance;
 }
 
-SDL_Renderer* const Canvas::GetRenderer() const {
+SDL_Renderer* Canvas::GetRenderer() const {
 	return m_renderer;
 }
 
-void Canvas::SetTitle(const std::string title) {
+void Canvas::SetTitle(std::string& title) {
 	SDL_SetWindowTitle(m_window, title.c_str());
 }
 

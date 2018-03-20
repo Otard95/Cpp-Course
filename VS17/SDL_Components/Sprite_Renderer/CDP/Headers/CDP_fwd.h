@@ -7,6 +7,7 @@ namespace CDP {
 	class Component;
 	class Sprite;
 	class Transform;
+	class Canvas;
 
 }
 

@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Headers\Sprite.h"
 #include "Headers\Transform.h"
-#include "..\Canvas.h"
+#include "Headers\Canvas.h"
 
 using namespace CDP;
 
